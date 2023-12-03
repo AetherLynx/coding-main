@@ -1,3 +1,5 @@
+// ZOOM CONTAINER CODE
+
 const zoomin = document.getElementById("zoomin");
 const zoomout = document.getElementById("zoomout");
 const zoomvalue = document.getElementById("zoomvalue");
@@ -43,3 +45,13 @@ function updateZoomValue() {
     }
 }
 
+
+
+// RESPONSIVE ICONS CODE
+var icon = document.getElementById('restart-icon');
+const restartext = document.getElementById('restart-text');
+
+document.getElementById('restart').addEventListener("click", () => {
+    icon.setAttribute('class', 'fa-solid fa-arrows-rotate fa-spin fa-lg');
+    restartext.innerHTML = "Reiniciando..."
+})

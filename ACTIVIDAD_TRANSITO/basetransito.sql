@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-11-2023 a las 21:30:18
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.1.12
+-- Tiempo de generación: 03-12-2023 a las 21:52:28
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,10 +34,10 @@ CREATE TABLE `usuario` (
   `tipovehiculo` varchar(40) NOT NULL,
   `pagos` varchar(40) NOT NULL,
   `tecnomecanica` varchar(40) NOT NULL,
-  `telefono` int(11) NOT NULL,
+  `telefono` varchar(20) NOT NULL,
   `correo` varchar(40) NOT NULL,
-  `multas` int(11) NOT NULL,
-  `valormult` int(11) NOT NULL
+  `multas` int(20) NOT NULL,
+  `valormult` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`cedula`, `nombre`, `placa`, `tipovehiculo`, `pagos`, `tecnomecanica`, `telefono`, `correo`, `multas`, `valormult`) VALUES
-(1, 'nombre', 'placa', 'tipovehiculo', 'Al dia', 'Validada', 2147483647, 'correo2', 0, 0);
+(1109188918, 'SAMUEL MARTINEZ MESA', 'CML821', 'CHEVROLET', 'Moroso', 'Validada', '3146928859', 'samimesa2000@gmail.com', 10, 20000);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

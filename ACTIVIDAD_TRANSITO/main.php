@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link href="style.css" rel="stylesheet">
-    <title>PÁGINA PRINCIPAL</title>
     <script src="https://kit.fontawesome.com/428d17dc40.js" crossorigin="anonymous"></script>
     <script src="script.js" type="module"></script>
+
+    <title>PÁGINA PRINCIPAL</title>
 </head>
+
 <body>
     <div class="topbar">
         <h1> <i class="fa-solid fa-address-book"></i> Página del Tránsito de Cali</h1>
     </div>
-    <br>    
-    <div class="innerbody" style="width:750px; background-color: #222222; border-color: #503165;">
-    <?php
+    <br>
+    <div class="innerbody" style="width:auto; background-color: #222222; border-color: #503165;">
+        <?php
         include("conexion.php");
-            if (isset($_POST['registrar'])) {
-                include("registrar.php");
-            } elseif (isset($_POST['modificar']) || isset($_POST['modificarmult']) || isset($_POST['eliminar'])) {
-                include("modificar.php");
-            } elseif (isset($_POST['buscar']) || isset($_POST['buscarplac']) || isset($_POST['buscarmult'])) {
-                include("buscar.php");
-            } else {
-                echo "<h3 border='none'>Cuando haga una consulta, aquí aparecerá.</h3>";
-            }
-    ?>  
+        if (isset($_POST['registrar'])) {
+            include("registrar.php");
+        } elseif (isset($_POST['modificar']) || isset($_POST['modificarmult']) || isset($_POST['eliminar'])) {
+            include("modificar.php");
+        } elseif (isset($_POST['buscar']) || isset($_POST['buscarplac']) || isset($_POST['buscarmult'])) {
+            include("buscar.php");
+        } else {
+            echo "<h3 border='none'>Cuando haga una consulta, aquí aparecerá.</h3>";
+        }
+        ?>
     </div>
-    <br>
-    <a href="main.php"><i class="fa-solid fa-arrows-rotate"></i>  Reiniciar página</a>
-    <br>
     <div class="rowth">
         <div class="innerbody">
             <h2><i class="fa-solid fa-pen"></i> Registro de usuario</h2>
@@ -72,17 +73,17 @@
             </div>
         </div>
         <div class="innerbody">
-                <h2><i class="fa-solid fa-magnifying-glass"></i> Consultar datos</h2>
-                <p>Puede modificar o consultar sus datos, puede consultar por cédula o por placa.</p><br>
+            <h2><i class="fa-solid fa-magnifying-glass"></i> Consultar datos</h2>
+            <p>Puede modificar o consultar sus datos, puede consultar por cédula o por placa.</p><br>
 
-                <h2><i class="fa-solid fa-id-card"></i> Buscar por cédula</h2>
+            <h2><i class="fa-solid fa-id-card"></i> Buscar por cédula</h2>
             <form method="post">
                 <sub>Cédula:</sub>
                 <input type="text" name="cedula_buscar" placeholder="Cedula de Ciudadanía" autocomplete="off" required><br>
                 <button type="submit" name="buscar"><i class="fa-solid fa-magnifying-glass"></i> Buscar</button>
             </form>
-            
-                <h2><i class="fa-solid fa-car-on"></i> Buscar por placa vehicular</h2>
+
+            <h2><i class="fa-solid fa-car-on"></i> Buscar por placa vehicular</h2>
             <form method="post">
                 <sub>Placa:</sub>
                 <input type="text" name="placa_buscar" placeholder="Placa de su Vehículo" autocomplete="off" required><br>
@@ -96,10 +97,12 @@
             <form method="post">
                 <sub>Cédula:</sub>
                 <input type="text" name="cedula_buscar" placeholder="Cedula de Ciudadanía" autocomplete="off" required><br>
-                <button type="submit" name="buscarmult"><i class="fa-solid fa-magnifying-glass"></i>  Buscar usuario</button>
+                <button type="submit" name="buscarmult"><i class="fa-solid fa-magnifying-glass"></i> Buscar
+                    usuario</button>
             </form>
         </div>
     </div>
+    <a href="main.php" class="restart-cont" id="restart"><i id="restart-icon" class="fa-solid fa-arrows-rotate fa-lg"></i><span id="restart-text">Reiniciar página</span></a>
     <div class="zoom-cont">
         Zoom: <span id="zoomvalue">0.95</span>
         <button id="zoomin"><i class="fa-solid fa-magnifying-glass-plus fa-lg"></i></button>
@@ -107,4 +110,5 @@
         <button id="reset"><i class="fa-solid fa-arrows-rotate"></i></button>
     </div>
 </body>
+
 </html>

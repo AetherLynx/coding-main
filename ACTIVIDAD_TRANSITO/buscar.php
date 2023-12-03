@@ -91,9 +91,9 @@ if ($resultado->num_rows > 0) {
                         <br>
                         <sub>ESTADO DE PAGOS</sub>
                         <select name='pagosnew'>
-                            <option value='Al dia'>Al día</option>
-                            <option value='Moroso'>Moroso</option>
-                            <option value='Sin pagos'>Sin pagos</option>
+                            <option value='Al dia' " . (($pagos === 'Al dia') ? 'selected' : '') . ">Al día</option>
+                            <option value='Moroso' " . (($pagos === 'Moroso') ? 'selected' : '') . ">Moroso</option>
+                            <option value='Sin pagos' " . (($pagos === 'Sin pagos') ? 'selected' : '') . ">Sin pagos</option>
                         </select>
                         <br>
                         <button type='submit' name='modificarmult'><i class='fa-solid fa-pen-to-square'></i>Actualizar datos</button>
