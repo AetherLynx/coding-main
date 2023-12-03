@@ -5,153 +5,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
     <title>PÁGINA PRINCIPAL</title>
+    <script src="https://kit.fontawesome.com/428d17dc40.js" crossorigin="anonymous"></script>
+    <script src="script.js" type="module"></script>
 </head>
 <body>
-    <div class="innerbody">
-        <h2>Página del Tránsito</h2>
-        <p>Bienvenido a la pagina del tránsito, en este portal podrás registrarte, modificar y consultar tus
-            datos.
-        </p>
+    <div class="topbar">
+        <h1> <i class="fa-solid fa-address-book"></i> Página del Tránsito de Cali</h1>
     </div>
     <br>    
-    <div class="innerbody" style="width:380px;">
-    <h3>Aquí se ejecutarán las acciones.</h3>
+    <div class="innerbody" style="width:750px; background-color: #222222; border-color: #503165;">
     <?php
         include("conexion.php");
             if (isset($_POST['registrar'])) {
-                $cedula = $_POST["cedula"];
-                $nombre = $_POST["nombre"];
-                $placa = $_POST["placa"];
-                $tipovehiculo = $_POST["tipovehiculo"];
-                $pagos = $_POST["pagos"];
-                $tecnomecanica = $_POST["tecnomecanica"];
-                $telefono = $_POST["telefono"];
-                $correo = $_POST["correo"];
-                $sql = "INSERT INTO usuario (cedula, nombre, placa, tipovehiculo, pagos, tecnomecanica, telefono, correo) VALUES ('$cedula', '$nombre', '$placa', '$tipovehiculo', '$pagos', '$tecnomecanica', '$telefono', '$correo')";
-            
-                if ($conn->query($sql) === TRUE) {
-                echo "El usuario fue registrado exitosamente!<br>Por favor presione Reiniciar Página.";
-                } else {
-                echo "Error al registrar datos: " . $conn->error;
-                }
-                $conn->close();
-
-            } elseif (isset($_POST['modificar'])) {
-                $cedula = $_POST["cedulanew"];
-                $nombre = $_POST["nombrenew"];
-                $placa = $_POST["placanew"];
-                $tipovehiculo = $_POST["tipovehiculonew"];
-                $pagos = $_POST["pagosnew"];
-                $tecnomecanica = $_POST["tecnomecanicanew"];
-                $telefono = $_POST["telefononew"];
-                $correo = $_POST["correonew"];
-
-                $sql = "UPDATE usuario SET cedula='$cedula', nombre='$nombre', placa='$placa', tipovehiculo='$tipovehiculo', pagos='$pagos', tecnomecanica='$tecnomecanica', telefono='$telefono', correo='$correo' WHERE cedula='$cedula'";
-
-                if ($conn->query($sql) === TRUE) {
-                    echo "Se ha actualizado el registro exitosamente!<br>Por favor presione Reiniciar Página.";
-                } else {
-                    echo "Error al actualizar el registro: " . $conn->error;
-                }
-
-            } elseif (isset($_POST['buscar'])) {
-                $cedula = $_POST['cedula_buscar'];
-                $sql = "SELECT * FROM usuario WHERE cedula=$cedula";
-                $resultado = $conn->query($sql);
-
-                if ($resultado->num_rows > 0) {
-                $row = $resultado->fetch_assoc();
-                $cedula = $row['cedula'];
-                $nombre = $row["nombre"];
-                $placa = $row["placa"];
-                $tipovehiculo = $row["tipovehiculo"];
-                $pagos = $row["pagos"];
-                $tecnomecanica = $row["tecnomecanica"];
-                $telefono = $row["telefono"];
-                $correo = $row["correo"];
-
-                echo "<h2>Revise o modifique sus datos.</h2>
-            <form action='main.php' method='post'>
-                <sub>CÉDULA</sub>
-                <input type='number' name='cedulanew' value='$cedula' readonly>
-                <br>
-                <sub>NOMBRE</sub>
-                <input type='text' name='nombrenew' maxlength='40' value='$nombre'  required>
-                <br>
-                <sub>PLACA</sub>
-                <input type='text' name='placanew' value='$placa' readonly>
-                <br>
-                <sub>TIPO DE VEHICULO</sub>
-                <input type='text' name='tipovehiculonew' value='$tipovehiculo' readonly>
-                <br>
-                <sub>ESTADO DE PAGOS</sub>
-                <input type='text' name='pagosnew' value='$pagos' readonly>
-                <br>
-                <sub>TECNOMECÁNICA</sub>
-                <input type='text' name='tecnomecanicanew' value='$tecnomecanica' readonly>
-                <br>
-                <sub>TELÉFONO</sub>
-                <input type='number' name='telefononew' maxlength='40' value='$telefono' required>
-                <br>
-                <sub>CORREO ELECTRÓNICO</sub>
-                <input type='text' name='correonew' maxlength='40' value='$correo' required>
-                <br>
-                <input type='submit' value='Modificar datos' name='modificar'>
-            </form>";
-                }
+                include("registrar.php");
+            } elseif (isset($_POST['modificar']) || isset($_POST['modificarmult']) || isset($_POST['eliminar'])) {
+                include("modificar.php");
+            } elseif (isset($_POST['buscar']) || isset($_POST['buscarplac']) || isset($_POST['buscarmult'])) {
+                include("buscar.php");
+            } else {
+                echo "<h3 border='none'>Cuando haga una consulta, aquí aparecerá.</h3>";
             }
     ?>  
     </div>
     <br>
-    <a href="main.php">Reiniciar página</a>
+    <a href="main.php"><i class="fa-solid fa-arrows-rotate"></i>  Reiniciar página</a>
     <br>
     <div class="rowth">
         <div class="innerbody">
-            <h2>Registro de usuario</h2>
-            <form action="main.php" method="post">
-                <sub>CÉDULA</sub>
-                <input type="number" name="cedula" maxlength="40" required>
-                <br>
-                <sub>NOMBRE</sub>
-                <input type="text" name="nombre" maxlength="40" required>
-                <br>
-                <sub>PLACA</sub>
-                <input type="text" name="placa" maxlength="40" required>
-                <br>
-                <sub>TIPO DE VEHICULO</sub>
-                <input type="text" name="tipovehiculo" maxlength="40" required>
-                <br>
-                <sub>ESTADO DE PAGOS</sub>
-                <select name="pagos">
-                    <option value="Al dia">Al día</option>
-                    <option value="Moroso">Moroso</option>
-                    <option value="Sin pagos">Sin pagos</option>
-                </select>
-                <br>
-                <sub>TECNOMECÁNICA</sub>
-                <select name="tecnomecanica">
-                    <option value="Validada">Validada</option>
-                    <option value="Pendiente">Pendiente</option>
-                    <option value="Rechazada">Rechazada</option>
-                </select>
-                <br>
-                <sub>TELÉFONO</sub>
-                <input type="number" name="telefono" maxlength="40" required>
-                <br>
-                <sub>CORREO ELECTRÓNICO</sub>
-                <input type="text" name="correo" maxlength="40" required>
-                <br>
-                <input type="submit" value="Registrar" name="registrar">
-            </form>
+            <h2><i class="fa-solid fa-pen"></i> Registro de usuario</h2>
+            <div>
+                <form method="post">
+                    <sub>CÉDULA</sub>
+                    <input type="number" name="cedula" maxlength="40" autocomplete="off" required>
+                    <br>
+                    <sub>NOMBRE</sub>
+                    <input type="text" name="nombre" maxlength="40" autocomplete="off" required>
+                    <br>
+                    <sub>PLACA</sub>
+                    <input type="text" name="placa" maxlength="40" autocomplete="off" required>
+                    <br>
+                    <sub>TIPO DE VEHICULO</sub>
+                    <input type="text" name="tipovehiculo" maxlength="40" autocomplete="off" required>
+                    <br>
+                    <sub>ESTADO DE PAGOS</sub>
+                    <select name="pagos">
+                        <option value="Al dia">Al día</option>
+                        <option value="Moroso">Moroso</option>
+                        <option value="Sin pagos">Sin pagos</option>
+                    </select>
+                    <br>
+                    <sub>TECNOMECÁNICA</sub>
+                    <select name="tecnomecanica">
+                        <option value="Validada">Validada</option>
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="Rechazada">Rechazada</option>
+                    </select>
+                    <br>
+                    <sub>TELÉFONO</sub>
+                    <input type="number" name="telefono" maxlength="40" autocomplete="off" required>
+                    <br>
+                    <sub>CORREO ELECTRÓNICO</sub>
+                    <input type="text" name="correo" maxlength="40" autocomplete="off" required>
+                    <br>
+                    <button type="submit" name="registrar"><i class="fa-solid fa-pen-to-square"></i> Registrar</button>
+                </form>
+            </div>
         </div>
         <div class="innerbody">
-            <h2>Modificar datos</h2>
-        <form action="main.php" method="post">
-            <sub>Buscar por cédula:</sub><br>
-            <input type="text" name="cedula_buscar" required><br>
-            <input type="submit" name="buscar" value="Buscar">
-        </form>
+                <h2><i class="fa-solid fa-magnifying-glass"></i> Consultar datos</h2>
+                <p>Puede modificar o consultar sus datos, puede consultar por cédula o por placa.</p><br>
+
+                <h2><i class="fa-solid fa-id-card"></i> Buscar por cédula</h2>
+            <form method="post">
+                <sub>Cédula:</sub>
+                <input type="text" name="cedula_buscar" placeholder="Cedula de Ciudadanía" autocomplete="off" required><br>
+                <button type="submit" name="buscar"><i class="fa-solid fa-magnifying-glass"></i> Buscar</button>
+            </form>
+            
+                <h2><i class="fa-solid fa-car-on"></i> Buscar por placa vehicular</h2>
+            <form method="post">
+                <sub>Placa:</sub>
+                <input type="text" name="placa_buscar" placeholder="Placa de su Vehículo" autocomplete="off" required><br>
+                <button type="submit" name="buscarplac"><i class="fa-solid fa-magnifying-glass"></i> Buscar</button>
+            </form>
+        </div>
+
+        <div class="innerbody">
+            <h2>Admin: Modificar Multas</h2>
+            <h2><i class="fa-solid fa-id-card"></i> Introduzca la cédula</h2>
+            <form method="post">
+                <sub>Cédula:</sub>
+                <input type="text" name="cedula_buscar" placeholder="Cedula de Ciudadanía" autocomplete="off" required><br>
+                <button type="submit" name="buscarmult"><i class="fa-solid fa-magnifying-glass"></i>  Buscar usuario</button>
+            </form>
+        </div>
     </div>
+    <div class="zoom-cont">
+        Zoom: <span id="zoomvalue">0.95</span>
+        <button id="zoomin"><i class="fa-solid fa-magnifying-glass-plus fa-lg"></i></button>
+        <button id="zoomout"><i class="fa-solid fa-magnifying-glass-minus fa-lg"></i></button>
+        <button id="reset"><i class="fa-solid fa-arrows-rotate"></i></button>
     </div>
 </body>
 </html>

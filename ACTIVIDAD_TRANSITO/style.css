@@ -8,11 +8,13 @@
 
     font-family: 'Work Sans';
     color: var(--c4);
+    zoom: 0.95;
 }
 
 body {
     margin: 40px;
-    background-color: #000000;
+    margin-top: 100px;
+    background-color: #6b636d;
 
     display: flex;
     flex-direction: column;
@@ -20,18 +22,50 @@ body {
     align-items: center;
 }
 
+.topbar {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(120deg, rgba(32, 18, 42, 1) 0%, rgba(0, 0, 0, 1) 100%);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom-style: solid;
+    border-bottom-color: var(--c4);
+    border-bottom-width: 2px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+
 .innerbody {
-    background-color: var(--c1);
-    border-radius: 10px;
-    padding: 30px;
+    flex: 0 0 auto;
+    flex-shrink: 0;
+
     text-align: center;
+
+    background: linear-gradient(0deg, rgba(32, 18, 42, 1) 0%, rgba(0, 0, 0, 1) 100%);
+    border-radius: 10px;
+    border-color: var(--c2);
+    border-width: 2px;
+    border-style: solid;
+    padding: 30px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .rowth {
+    z-index: 1;
+    will-change: transform;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    padding:30px;
+    overflow-x: auto;
+    max-width: 1000px;
 }
 
 .rowth .innerbody {
@@ -45,30 +79,21 @@ body {
 }
 
 p {
-    margin: 20px;
+    margin: 2px;
+    color: #a39797;
 }
 
-a, button {
-    text-decoration: none;
-    padding: 15px;
-    background-color: var(--c4);
-    color: var(--c1);
-    border-radius: 10px;
-    transition: all 0.1s ease-in-out;
-    font-size: 16px;
-}
-
-a:hover, button:hover{
-    background-color: #d0c0c0;
-    color: #232323;
-    cursor: pointer;
+h1, h2, h3, h4, h5, h6 {
+    margin: 5px;
+    padding: 10px;
 }
 
 form {
     margin: 3px;
 }
 
-input, select {
+input,
+select {
     background-color: var(--c1);
     border-color: var(--c4);
     border-radius: 8px;
@@ -77,19 +102,37 @@ input, select {
     color: var(--c4);
     padding: 8px;
     margin: 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-input[type="submit"] {
+.zoom-cont {
+    z-index: 3;
+    left: 10px;
+    bottom: 10px;
+    position: fixed;
+    background: linear-gradient(153deg, rgba(31, 18, 41) 0%, rgba(44, 47, 67) 100%);
+    border-radius: 8px;
+    padding: 10px;
+    width: 222px;
+    height: 40px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+a, button {
     text-decoration: none;
-    background-color: var(--c4);
-    color: var(--c1);
+    padding: 12px;
+    background: linear-gradient(153deg, rgba(48, 27, 63, 1) 0%, rgba(60, 65, 92, 1) 100%);
+    color: #fff;
+    border-style:none;
     border-radius: 10px;
     transition: all 0.1s ease-in-out;
     font-size: 16px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-input[type="submit"]:hover {
-    background-color: #cababa;
+a:hover, button:hover {
+    background: linear-gradient(153deg, rgba(95, 56, 122, 1) 0%, rgba(80, 86, 121, 1) 100%);
+    cursor: pointer;
 }
 
 input[readonly] {
@@ -104,4 +147,36 @@ input[type="submit"]:hover {
 sub {
     color: var(--c4);
     font-size: 16px;
+}
+
+/*CÓDIGO PARA LA SCROLLBAR :)) src: https: //www.cssportal.com/css-scrollbar-generator/*/
+*::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background: linear-gradient(0deg, rgba(32, 18, 42, 1) 0%, rgba(0, 0, 0, 1) 100%);
+}
+
+*::-webkit-scrollbar-track:hover {
+    background-color: #3C415C;
+}
+
+*::-webkit-scrollbar-track:active {
+    background-color: #3C415C;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #B4A5A5;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: #D3C1C1;
+}
+
+*::-webkit-scrollbar-thumb:active {
+    background-color: #B4A5A5;
 }
