@@ -83,7 +83,12 @@ p {
     color: #a39797;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin: 5px;
     padding: 10px;
 }
@@ -133,7 +138,7 @@ select {
     display: flex;
     flex-direction: row;
     align-items: center;
-    
+
 }
 
 .restart-cont i {
@@ -144,20 +149,22 @@ select {
     margin: 0;
 }
 
-a, button {
+a,
+button {
     margin: 20px;
     text-decoration: none;
     padding: 12px;
     background: linear-gradient(153deg, rgba(48, 27, 63, 1) 0%, rgba(60, 65, 92, 1) 100%);
     color: #fff;
-    border-style:none;
+    border-style: none;
     border-radius: 10px;
     transition: all 0.1s ease-in-out;
     font-size: 16px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-a:hover, button:hover {
+a:hover,
+button:hover {
     background: linear-gradient(153deg, rgba(95, 56, 122, 1) 0%, rgba(80, 86, 121, 1) 100%);
     cursor: pointer;
 }
@@ -211,4 +218,13 @@ span {
 
 *::-webkit-scrollbar-thumb:active {
     background-color: #B4A5A5;
+}
+
+.screamer {
+    position: absolute;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 4;
+    display: none;
 }

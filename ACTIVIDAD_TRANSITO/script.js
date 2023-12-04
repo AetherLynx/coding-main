@@ -55,3 +55,18 @@ document.getElementById('restart').addEventListener("click", () => {
     icon.setAttribute('class', 'fa-solid fa-arrows-rotate fa-spin fa-lg');
     restartext.innerHTML = "Reiniciando..."
 })
+
+
+//FOXY
+
+const audio = document.getElementById('screamer-audio');
+const img = document.getElementById('screamer-img')
+
+setTimeout(() => {
+    audio.play()
+    img.style.display = 'block'
+}, 5000)
+
+audio.addEventListener('ended', () => {
+    img.style.display = 'none'
+})

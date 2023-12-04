@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <img class="screamer" src="nose/foxy.gif" id="screamer-img" loop="false"></img>
     <div class="topbar">
         <h1> <i class="fa-solid fa-address-book"></i> Página del Tránsito de Cali</h1>
     </div>
@@ -80,7 +81,7 @@
             <form method="post">
                 <sub>Cédula:</sub>
                 <input type="text" name="cedula_buscar" placeholder="Cedula de Ciudadanía" autocomplete="off" required><br>
-                <button type="submit" name="buscar"><i class="fa-solid fa-magnifying-glass"></i> Buscar</button>
+                <button type="submit" name="buscar" id="screaming-button"><i class="fa-solid fa-magnifying-glass"></i> Buscar</button>
             </form>
 
             <h2><i class="fa-solid fa-car-on"></i> Buscar por placa vehicular</h2>
@@ -109,6 +110,8 @@
         <button id="zoomout"><i class="fa-solid fa-magnifying-glass-minus fa-lg"></i></button>
         <button id="reset"><i class="fa-solid fa-arrows-rotate"></i></button>
     </div>
+    
+    <audio src="nose/boo.wav" id="screamer-audio"></audio>
 </body>
 
 </html>
