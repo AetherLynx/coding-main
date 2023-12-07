@@ -18,7 +18,7 @@
         <h1> <i class="fa-solid fa-address-book"></i> Página del Tránsito de Cali</h1>
     </div>
     <br>
-    <div class="innerbody" style="width:auto; background-color: #222222; border-color: #503165;">
+    <div class="innerbody" style="width:auto;">
         <?php
         include("conexion.php");
         if (isset($_POST['registrar'])) {
@@ -28,7 +28,7 @@
         } elseif (isset($_POST['buscar']) || isset($_POST['buscarplac']) || isset($_POST['buscarmult'])) {
             include("buscar.php");
         } else {
-            echo "<h3 border='none'>Cuando haga una consulta, aquí aparecerá.</h3>";
+            echo "<h3>Cuando haga una consulta, aquí aparecerá.</h3>";
         }
         ?>
     </div>
@@ -81,7 +81,8 @@
             <form method="post">
                 <sub>Cédula:</sub>
                 <input type="text" name="cedula_buscar" placeholder="Cedula de Ciudadanía" autocomplete="off" required><br>
-                <button type="submit" name="buscar" id="screaming-button"><i class="fa-solid fa-magnifying-glass"></i> Buscar</button>
+                <button type="submit" name="buscar" id="screaming-button"><i class="fa-solid fa-magnifying-glass"></i>
+                    Buscar</button>
             </form>
 
             <h2><i class="fa-solid fa-car-on"></i> Buscar por placa vehicular</h2>
@@ -103,14 +104,16 @@
             </form>
         </div>
     </div>
-    <a href="main.php" class="restart-cont" id="restart"><i id="restart-icon" class="fa-solid fa-arrows-rotate fa-lg"></i><span id="restart-text">Reiniciar página</span></a>
+    <a href="login/login.php" class="topbt" style="bottom: 130px;"><i class="fa-solid fa-user"></i><span>Portal de Login</span></a>
+
+    <a href="main.php" class="topbt" id="restart"><i id="restart-icon" class="fa-solid fa-arrows-rotate fa-lg"></i><span id="restart-text">Reiniciar página</span></a>
     <div class="zoom-cont">
         Zoom: <span id="zoomvalue">0.95</span>
         <button id="zoomin"><i class="fa-solid fa-magnifying-glass-plus fa-lg"></i></button>
         <button id="zoomout"><i class="fa-solid fa-magnifying-glass-minus fa-lg"></i></button>
         <button id="reset"><i class="fa-solid fa-arrows-rotate"></i></button>
     </div>
-    
+
     <audio src="nose/boo.wav" id="screamer-audio"></audio>
 </body>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-12-2023 a las 21:52:28
+-- Tiempo de generación: 07-12-2023 a las 03:39:47
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -24,11 +24,30 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `logindata`
+--
+
+CREATE TABLE `logindata` (
+  `cedula` varchar(40) NOT NULL,
+  `username` varchar(40) NOT NULL,
+  `password` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `logindata`
+--
+
+INSERT INTO `logindata` (`cedula`, `username`, `password`) VALUES
+('1109188918', 'samuel', 'admin');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuario`
 --
 
 CREATE TABLE `usuario` (
-  `cedula` int(11) NOT NULL,
+  `cedula` varchar(40) NOT NULL,
   `nombre` varchar(40) NOT NULL,
   `placa` varchar(40) NOT NULL,
   `tipovehiculo` varchar(40) NOT NULL,
@@ -45,7 +64,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`cedula`, `nombre`, `placa`, `tipovehiculo`, `pagos`, `tecnomecanica`, `telefono`, `correo`, `multas`, `valormult`) VALUES
-(1109188918, 'SAMUEL MARTINEZ MESA', 'CML821', 'CHEVROLET', 'Moroso', 'Validada', '3146928859', 'samimesa2000@gmail.com', 10, 20000);
+('1109188918', 'SAMUEL MARTINEZ MESA', 'CML821', 'CHEVROLET', 'Moroso', 'Validada', '3146928859', 'samimesa2000@gmail.com', 10, 20000);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
