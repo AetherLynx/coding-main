@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+
+* {
+    --co1: #F5EEE6;
+    --co2: #FFF8E3;
+    --co3: #F3D7CA;
+    --co4: #E6A4B4;
+
+    color: var(--co1);
+
+    font-family: "Concert One";
+}
+
+body {
+    margin: 10px;
+    background-color: var(--co4);
+}
